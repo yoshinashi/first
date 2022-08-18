@@ -22,10 +22,10 @@ class PostController extends Controller
         return view('posts/create');
     }
 
-    public function store(Post $post, PostRequest $request) 
-    {
-        $input = $request['post'];
-        $post->fill($input)->save();
-        return redirect('/posts/' . $post->id);
-    }
+    public function store(PostRequest $request, Post $post)
+{
+    $input = $request['post'];
+    $post->fill($input)->save();
+    return redirect('/posts/' . $post->id);
+}
 }
