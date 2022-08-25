@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,22 +12,17 @@ class CreatePostsTable extends Migration
      * @return void
      */
     public function up()
-{
-    Schema::table('posts', function (Blueprint $table) {
-        
+    {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 50);
-            $table->string('body', 200);
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
-            $table->string('image', 100)->nullable();
-    });
-}
+        });
+    }
 
-        
-    
-
-   
     /**
      * Reverse the migrations.
      *
@@ -35,6 +30,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('users');
     }
 }
