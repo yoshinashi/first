@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>Blog</title>
     </head>
+    @extends('layouts.app')　　　　　　　　
+    @section('content')
     <body>
        <div class="category">
     <h2>Category</h2>
@@ -14,4 +16,5 @@
     </select>
         </div>
     </body>
+    @endsection
 </html>
